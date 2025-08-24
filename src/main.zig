@@ -300,8 +300,8 @@ pub fn draw_boris(buffer: *[INKY_HEIGHT][INKY_WIDTH/2]u8) void {
             const x_byte = (x*2) / 8;
             const x_bit: u3 = @intCast(7 - (x*2) % 8);
 
-            const colour_left: u8 = if ((BORIS[y][x_byte] >> (x_bit-1)) & 0x01 != 0) 1 else 0;
-            const colour_right: u8 = if ((BORIS[y][x_byte] >> (x_bit)) & 0x01 != 0) 1 else 0;
+            const colour_left: u8 = if ((BORIS[y][x_byte] >> (x_bit)) & 0x01 != 0) 1 else 0;
+            const colour_right: u8 = if ((BORIS[y][x_byte] >> (x_bit-1)) & 0x01 != 0) 1 else 0;
 
             buffer[INKY_HEIGHT - y][x] = @intCast((colour_left << 4) + colour_right);
         }
